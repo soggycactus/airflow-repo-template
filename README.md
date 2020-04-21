@@ -8,6 +8,8 @@ Airflow has a number of built-in concepts that make data engineering simple, inc
 
 Airflow also comes with its own microservice architecture: a database to persist the state of DAGs and connections, a web server that supports the user-interface, and workers that are managed together by the scheduler and database. Logs persist both in flat files and the database, and Airflow can be setup to write remote logs (to S3 for example). Logs are viewable in the UI.
 
+![Airflow Architecture](docs/airflow_architecture.png)
+
 ### Getting Started
 
 DAGs should be developed & tested locally first, before being promoted to a development environment for integration testing. Once DAGs are successful in the lower environments, they can be promoted to production. 

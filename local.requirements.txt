@@ -1,0 +1,12 @@
+# This requirements file contains packages to install in our local environment
+# These packages will not be installed in our local Airflow instance
+# These packages should primarily relate to linting & testing
+
+black
+pylint-airflow
+pylint
+pytest
+
+# Install custom plugins as an egg for linting & local development
+# These plugins are automatically installed as entrypoints to `airflow.plugins` by Airflow
+-e .
