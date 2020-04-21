@@ -1,0 +1,59 @@
+version: "2.2"
+services:
+  postgres:
+    image: postgres:9.6
+    environment:
+      - POSTGRES_USER=airflow
+      - POSTGRES_PASSWORD=airflow
+      - POSTGRES_DB=airflow
+    ports:
+      - 5439:5432
+    volumes:
+      - postgres:/var/lib/postgresql/data
+
+  initdb:
+    build: .
+    depends_on:
+      - postgres
+    env_file: .env
+    environment:
+      AIRFLOW_HOME: /root/airflow
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@host.docker.internal:5439/airflow
+    command: airflow initdb
+
+  webserver:
+    build: .
+    depends_on:
+      - initdb
+    env_file: .env
+    environment:
+      AIRFLOW_HOME: /root/airflow
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@host.docker.internal:5439/airflow
+    volumes:
+      - ./dags:/root/airflow/dags
+      - ./plugins:/root/airflow/plugins
+      - airflow-worker-logs:/root/airflow/logs
+    ports:
+      - "8080:8080"
+    command: airflow webserver
+
+  scheduler:
+    build: .
+    depends_on:
+      - webserver
+    env_file: .env
+    environment:
+      AIRFLOW_HOME: /root/airflow
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@host.docker.internal:5439/airflow
+    volumes:
+      - ./dags:/root/airflow/dags
+      - ./plugins:/root/airflow/plugins
+      - airflow-worker-logs:/root/airflow/logs
+    command: airflow scheduler
+
+volumes:
+  postgres: {}
+  airflow-worker-logs:
