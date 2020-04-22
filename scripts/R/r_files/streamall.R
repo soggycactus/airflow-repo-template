@@ -14,11 +14,7 @@ sns_send_message(phone_number=Sys.getenv('MY_PHONE'), message='Running gathering
 # Do something with comments
 parse_comments_wrapper <- function(x) {
   submission_value <- parse_comments(x)
-  if(!file_exists('stream.csv')) {
-    write_csv(x = submission_value, path = 'stream.csv', append = FALSE)
-  } else {
-    write_csv(x = submission_value, path = 'stream.csv', append = TRUE)
-  }
+  write_csv(x = submission_value, path = 'stream.csv', append = TRUE)
   print(now(tzone = 'UTC') - submission_value$created_utc)
 }
 

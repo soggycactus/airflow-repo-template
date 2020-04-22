@@ -10,6 +10,7 @@ args = {
     'email_on_failure': True,
     'email_on_retry': True
 }
+
 dag = DAG(dag_id='streamall',
           default_args=args,
           schedule_interval='@once',
