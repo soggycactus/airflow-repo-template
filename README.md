@@ -60,5 +60,4 @@ docker exec -it  localflow_scheduler_1  /bin/bash
 
 ```
 docker build -t rpy .
-docker push fdrennan/rpy:latest
 ```
