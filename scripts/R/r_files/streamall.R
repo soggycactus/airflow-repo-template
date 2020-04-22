@@ -7,7 +7,7 @@ reddit_con = praw$Reddit(client_id=Sys.getenv('REDDIT_CLIENT'),
                          client_secret=Sys.getenv('REDDIT_AUTH'),
                          user_agent=Sys.getenv('USER_AGENT'),
                          username=Sys.getenv('USERNAME'),
-                         password=Sys.getenv('PASSWORDggr'))
+                         password=Sys.getenv('PASSWORD'))
 
 sns_send_message(phone_number=Sys.getenv('MY_PHONE'), message='Running gathering')
 

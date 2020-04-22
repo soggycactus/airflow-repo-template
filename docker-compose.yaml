@@ -12,7 +12,7 @@ services:
       - postgres:/var/lib/postgresql/data
 
   initdb:
-    image: airflower
+    image: rpy
     depends_on:
       - postgres
     env_file: .env
@@ -23,7 +23,7 @@ services:
     command: airflow initdb
 
   webserver:
-    image: airflower
+    image: rpy
     depends_on:
       - initdb
     env_file: .env
@@ -40,7 +40,7 @@ services:
     command: airflow webserver
 
   scheduler:
-    image: airflower
+    image: rpy
     depends_on:
       - webserver
     env_file: .env
