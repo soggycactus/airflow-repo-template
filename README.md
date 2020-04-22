@@ -53,3 +53,12 @@ Code is contributed either in `dags`, a directory that houses all Airflow DAG co
 7) Navigate to http://localhost:8080/ and start writing & testing your DAGs!
 
 You'll notice in `docker-compose.yaml` that both DAGs and plugins are mounted as volumes. This means once Airflow is started, any changes to your code will be quickly synced to the webserver and scheduler. You shouldn't have to restart the Airflow instance during a period of development! 
+
+```
+docker exec -it  localflow_scheduler_1  /bin/bash
+```
+
+```
+docker build -t rpy .
+docker push fdrennan/rpy:latest
+```
