@@ -61,3 +61,7 @@ docker exec -it  localflow_scheduler_1  /bin/bash
 ```
 docker build -t rpy .
 ```
+
+```.env
+172.17.0.1 on AWS
+```
