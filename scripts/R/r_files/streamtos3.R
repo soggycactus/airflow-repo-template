@@ -9,7 +9,7 @@ tryCatch({
   now_time_csv <- glue('stream_{nowtime}.csv')
   now_time_zip <- glue('stream_{nowtime}.zip')
   fs::file_move(path = 'stream.csv', new_path = now_time_csv)
-  data <- read_csv('now_time_csv', col_names = FALSE)
+  data <- read_csv(now_time_csv, col_names = FALSE)
   colnames(data) <- c("author", "author_fullname", "author_patreon_flair", "author_premium", 
                       "body", "can_gild", "can_mod_post", "controversiality", "created", 
                       "created_utc", "depth", "downs", "fullname", "id", "is_root", 
