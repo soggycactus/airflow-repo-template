@@ -22,7 +22,6 @@ tryCatch({
   file_size <- as.character(fs::file_info(now_time_csv)$size)
   file_delete(now_time_csv)
   file_delete(now_time_zip)
-  sns_send_message(phone_number = Sys.getenv('MY_PHONE'), message = glue('File uploaded\n{file_size}')) 
 }, error = function(e) {
   file_size <- as.character(fs::file_info(now_time_csv)$size)
   sns_send_message(phone_number = Sys.getenv('MY_PHONE'), message = 'Something went wrong') 
