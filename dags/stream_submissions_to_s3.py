@@ -19,7 +19,7 @@ dag = DAG(dag_id='stream_submissions_to_s3',
 
 task_1 = BashOperator(
     task_id='streamtos3',
-    bash_command='. /home/scripts/R/shell/stream_submissions_to_s3',
+    bash_command='. /home/scripts/R/shell/stream_submission_to_s3',
     dag=dag
 )
 
