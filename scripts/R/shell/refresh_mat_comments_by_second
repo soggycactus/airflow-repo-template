@@ -1,0 +1,4 @@
+#!/bin/bash
+
+cd /home/scripts/R/r_files
+/usr/bin/Rscript /home/scripts/R/r_files/refresh_mat_comments_by_second.R
