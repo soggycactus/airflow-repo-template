@@ -18,7 +18,7 @@ dag = DAG(dag_id='refresh_mat_comments_by_second',
           catchup=False)
 
 task_1 = BashOperator(
-    task_id='streamtos3',
+    task_id='refresh_mat_comments_by_second',
     bash_command='. /home/scripts/R/shell/refresh_mat_comments_by_second',
     dag=dag
 )

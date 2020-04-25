@@ -18,7 +18,7 @@ dag = DAG(dag_id='refresh_mat_stream_authors',
           catchup=False)
 
 task_1 = BashOperator(
-    task_id='streamtos3',
+    task_id='refresh_mat_stream_authors',
     bash_command='. /home/scripts/R/shell/refresh_mat_stream_authors',
     dag=dag
 )
