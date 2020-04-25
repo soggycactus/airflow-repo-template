@@ -17,9 +17,9 @@ tryCatch({
                       "permalink", "score", "submission", "subreddit", "subreddit_id", 
                       "total_awards_received", "ups", "time_gathered_utc")
   dbAppendTable(conn = con, name = 'streamall', value = data)
-  zip(zipfile = now_time_zip, files = now_time_csv)
-  s3_upload_file(bucket = 'reddit-dumps', from = now_time_zip, to = now_time_zip, make_public = TRUE)
-  file_size <- as.character(fs::file_info(now_time_csv)$size)
+  # zip(zipfile = now_time_zip, files = now_time_csv)
+  # s3_upload_file(bucket = 'reddit-dumps', from = now_time_zip, to = now_time_zip, make_public = TRUE)
+  # file_size <- as.character(fs::file_info(now_time_csv)$size)
   file_delete(now_time_csv)
   file_delete(now_time_zip)
 }, error = function(e) {

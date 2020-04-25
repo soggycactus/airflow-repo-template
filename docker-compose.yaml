@@ -2,6 +2,7 @@ version: "2.2"
 services:
   postgres:
     image: postgres:9.6
+    restart: always
     environment:
       - POSTGRES_USER=airflow
       - POSTGRES_PASSWORD=airflow
@@ -13,6 +14,7 @@ services:
 
   initdb:
     image: rpy
+    restart: always
     depends_on:
       - postgres
     env_file: .env
@@ -24,6 +26,7 @@ services:
 
   webserver:
     image: rpy
+    restart: always
     depends_on:
       - initdb
     env_file: .env
@@ -41,6 +44,7 @@ services:
 
   scheduler:
     image: rpy
+    restart: always
     depends_on:
       - webserver
     env_file: .env
