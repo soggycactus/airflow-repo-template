@@ -16,6 +16,7 @@ DAGs should be developed & tested locally first, before being promoted to a deve
 
 Code is contributed either in `dags`, a directory that houses all Airflow DAG configuration files, or `plugins`, a directory that houses Python objects that can be used within a DAG. Essentially, if you want to abstract something out for reuse in other pipelines, it should probably go in `plugins`. 
 
+
 #### Running Airflow locally
 
 1) Create a virtual environment and:
@@ -37,7 +38,9 @@ Code is contributed either in `dags`, a directory that houses all Airflow DAG co
 
         docker-compose up -d --build postgres
 
-6) Start Airflow! 
+6) Build the docker container
+   - `docker build -t rpy .`
+7) Start Airflow! 
    - if this is your **first time** standing up Airflow:
 
                 # you need to run the initdb container so the Airflow schema can be created in the database
@@ -50,18 +53,12 @@ Code is contributed either in `dags`, a directory that houses all Airflow DAG co
 
                 docker-compose up
 
-7) Navigate to http://localhost:8080/ and start writing & testing your DAGs!
+8) Navigate to http://localhost:8080/ and start writing & testing your DAGs!
 
 You'll notice in `docker-compose.yaml` that both DAGs and plugins are mounted as volumes. This means once Airflow is started, any changes to your code will be quickly synced to the webserver and scheduler. You shouldn't have to restart the Airflow instance during a period of development! 
 
+## To Step Inside the Container
 ```
 docker exec -it  localflow_scheduler_1  /bin/bash
 ```
 
-```
-docker build -t rpy .
-```
-
-```.env
-172.17.0.1 on AWS
-```
