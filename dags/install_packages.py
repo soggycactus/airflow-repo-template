@@ -11,7 +11,7 @@ args = {
 }
 dag = DAG(dag_id='r_installation',
           default_args=args,
-          schedule_interval='@once',
+          schedule_interval=None,
           concurrency=1,
           max_active_runs=1,
           catchup=False)

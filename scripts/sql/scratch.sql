@@ -11,3 +11,6 @@ create view public.stream_submissions as (
     from public.stream_submissions_all
 );
 
+select max(created_utc)
+from public.stream_comments
+

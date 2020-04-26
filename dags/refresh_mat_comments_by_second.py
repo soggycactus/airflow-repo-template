@@ -12,7 +12,7 @@ args = {
 }
 dag = DAG(dag_id='refresh_mat_comments_by_second',
           default_args=args,
-          schedule_interval='@hourly',
+          schedule_interval='*/5 * * * *',
           concurrency=1,
           max_active_runs=1,
           catchup=False)
