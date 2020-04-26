@@ -21,7 +21,7 @@ services:
     environment:
       AIRFLOW_HOME: /root/airflow
       AIRFLOW__CORE__EXECUTOR: LocalExecutor
-      AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@host.docker.internal:5439/airflow
+      AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@172.17.0.1:5439/airflow
     command: airflow initdb
 
   webserver:
@@ -33,7 +33,7 @@ services:
     environment:
       AIRFLOW_HOME: /root/airflow
       AIRFLOW__CORE__EXECUTOR: LocalExecutor
-      AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@host.docker.internal:5439/airflow
+      AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@172.17.0.1:5439/airflow
     volumes:
       - ./dags:/root/airflow/dags
       - ./plugins:/root/airflow/plugins
@@ -51,7 +51,7 @@ services:
     environment:
       AIRFLOW_HOME: /root/airflow
       AIRFLOW__CORE__EXECUTOR: LocalExecutor
-      AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@host.docker.internal:5439/airflow
+      AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@172.17.0.1:5439/airflow
     volumes:
       - ./dags:/root/airflow/dags
       - ./scripts:/home/scripts
