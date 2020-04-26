@@ -62,3 +62,7 @@ You'll notice in `docker-compose.yaml` that both DAGs and plugins are mounted as
 docker exec -it  localflow_scheduler_1  /bin/bash
 ```
 
+```
+scp -i ndexr.pem ubuntu@ndexr.com:/var/lib/postgresql/pg_backup.bak pg_backup.bak
+scp -i ndexr.pem pg_backup.bak ubuntu@ndexr.com:/var/lib/postgresql/pg_backup.bak 
+```
