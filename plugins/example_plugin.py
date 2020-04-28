@@ -1,4 +1,4 @@
-""" BigQuery related utilities for Airflow """
+""" Example Airflow Plugin """
 import logging
 
 from airflow.models import BaseOperator
