@@ -6,7 +6,7 @@
 #   Werkzeug should be 0.16.0, not 1.0.0
 
 alembic==1.4.0
-apache-airflow==1.10.6
+apache-airflow==1.10.12
 apispec==3.3.0
 argcomplete==1.11.1
 attrs==19.3.0
