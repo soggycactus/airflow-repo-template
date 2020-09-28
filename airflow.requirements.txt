@@ -96,7 +96,7 @@ Pygments==2.5.2
 PyJWT==1.7.1
 pyOpenSSL==19.1.0
 pyrsistent==0.15.7
-psycopg2-binary==2.7.7 # used for local Postgres container for airflow db
+psycopg2-binary==2.8.6 # used for local Postgres container for airflow db
 python-daemon==2.1.2
 python-dateutil==2.8.1
 python-editor==1.0.4
