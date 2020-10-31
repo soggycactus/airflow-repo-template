@@ -1,7 +1,7 @@
 version: "2.2"
 services:
   postgres:
-    image: postgres:9.6
+    image: postgres:13.0
     environment:
       - POSTGRES_USER=airflow
       - POSTGRES_PASSWORD=airflow
@@ -31,6 +31,7 @@ services:
       AIRFLOW_HOME: /root/airflow
       AIRFLOW__CORE__EXECUTOR: LocalExecutor
       AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@host.docker.internal:5439/airflow
+      AIRFLOW__WEBSERVER__EXPOSE_CONFIG: "True"
     volumes:
       - ./dags:/root/airflow/dags
       - ./plugins:/root/airflow/plugins
