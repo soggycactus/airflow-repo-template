@@ -22,7 +22,7 @@ class TestDagIntegrity(unittest.TestCase):
         """
 
         # we run resetdb instead of initdb here to ensure idempotency for Fernet key
-        subprocess.run(["airflow", "resetdb", "-y"], check=False)
+        subprocess.run(["airflow", "db", "reset", "-y"], check=False)
 
         # must set a Fernet key to store connections in the db
         # read more here: https://airflow.readthedocs.io/en/stable/howto/secure-connections.html

@@ -3,7 +3,7 @@ import inspect
 import logging
 import unittest
 
-from airflow.plugins_manager import AirflowPlugin, is_valid_plugin
+from airflow.plugins_manager import AirflowPlugin
 
 import plugins
 
@@ -18,7 +18,7 @@ def isplugin(x):
     """
     if inspect.isclass(x):
         return (
-            issubclass(x, AirflowPlugin) and x.__name__ != "AirflowPlugin"
+            issubclass(x, AirflowPlugin) and x is not AirflowPlugin
         )  # ignore the AirflowPlugin object itself
     return False
 
@@ -75,8 +75,4 @@ class TestPlugins(unittest.TestCase):
         """
         for name, plugin in self.plugins:
             logging.info("Validating %s", name)
-
-            # is_valid_plugin is used by Airflow internally to validate plugins before installation
-            # it accepts an argument of existing plugins to prevent duplicate installs
-            # because we're testing validity, not installing, we pass an empty list
-            self.assertTrue(is_valid_plugin(plugin, []))
+            plugin.validate()

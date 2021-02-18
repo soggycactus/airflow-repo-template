@@ -1,33 +1,22 @@
 """ Example Airflow Plugin """
-import logging
-
-from airflow.models import BaseOperator
+from airflow.hooks.base import BaseHook
 from airflow.plugins_manager import AirflowPlugin
-from airflow.utils.decorators import apply_defaults
 
 
-class ExamplePluginOperator(BaseOperator):
+class ExampleHook(BaseHook):
     """
-    Example Operator to print a message
+    ExampleHook is an example hook for an Airflow plugin
     """
 
-    @apply_defaults
-    def __init__(
-        self,
-        message: str,
-        *args,
-        **kwargs,
-    ):
+    def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.message = message
 
-    def execute(self, context):
-        logging.info("Returning the message: %s", self.message)
-        return self.message
+    def get_conn(self):
+        print("I got your connection")
 
 
 class ExamplePlugin(AirflowPlugin):
     """ Example Plugin """
 
     name = "example_plugin"
-    operators = [ExamplePluginOperator]
+    hooks = [ExampleHook]
