@@ -3,6 +3,7 @@ logs/
 airflow.db
 airflow.cfg
 unittests.cfg
+webserver_config.py
 
 # VSCode
 .vscode
@@ -112,3 +113,10 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+# all .DS_Store
+**/.DS_Store
+.DS_Store
+
+# Makefile
+.Makefile
